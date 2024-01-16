@@ -1,0 +1,41 @@
+{
+  "name": "@limanmys/frontend-kit",
+  "version": "1.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limanmys/frontend-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/limanmys/frontend-kit/issues/new"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/frontend-kit.umd.cjs",
+  "module": "./dist/frontend-kit.js",
+  "exports": {
+    ".": {
+      "import": "./dist/frontend-kit.js",
+      "require": "./dist/frontend-kit.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "types": "vue-tsc ",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "naive-ui": "^2.37.3",
+    "vue": "^3.3.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vue-tsc": "^1.8.25"
+  }
+}
