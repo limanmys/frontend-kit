@@ -1,0 +1,21 @@
+{
+    "extends": "@vue/tsconfig/tsconfig.dom.json",
+    "include": ["src/env.d.ts", "src/**/*", "src/**/*.vue"],
+    "compilerOptions": {
+      // only uncomment if you encounter problems w. 3rd party libs
+      // See: https://github.com/vuejs/tsconfig?tab=readme-ov-file#migrating-from-typescript--50
+      "resolvePackageJsonExports": false,
+      "composite": true,
+      "outDir": "dist",
+      "declarationDir": "dist/types",
+      "allowJs": true,
+      "baseUrl": ".",
+      "rootDir": "src",
+      "paths": {
+        "@/*": ["./src/*"]
+      },
+      "noEmit": false,
+      "allowImportingTsExtensions": true
+    }
+  }
+  

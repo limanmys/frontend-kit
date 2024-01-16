@@ -1,6 +1,6 @@
 {
   "name": "@limanmys/frontend-kit",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "type": "module",
   "repository": {
     "type": "git",
@@ -10,30 +10,39 @@
     "url": "https://github.com/limanmys/frontend-kit/issues/new"
   },
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "main": "./dist/frontend-kit.umd.cjs",
   "module": "./dist/frontend-kit.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/frontend-kit.js",
       "require": "./dist/frontend-kit.umd.cjs"
     },
+    "./*": "./*",
     "./style.css": "./dist/style.css"
   },
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --emitDeclarationOnly",
-    "types": "vue-tsc ",
+    "build": "vite build && vue-tsc --emitDeclarationOnly --declaration -p tsconfig.app.json",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@json2csv/plainjs": "^7.0.4",
+    "axios": "^1.6.5",
+    "date-fns": "^3.2.0",
+    "js-file-download": "^0.4.12",
     "naive-ui": "^2.37.3",
     "vue": "^3.3.11"
   },
   "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@types/jquery": "^3.5.29",
     "@vitejs/plugin-vue": "^4.5.2",
+    "@vue/tsconfig": "^0.5.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vue-tsc": "^1.8.25"
