@@ -10,6 +10,7 @@ import Error from './components/Error.vue'
 
 // Utils
 import { HttpClient } from './utils/http-common.js'
+import AxiosClient from './utils/axios-client.js'
 import can from './utils/can.js'
 import { deepCopy } from './utils/deep-copy.js'
 import { formatDate, formatTimeObject } from './utils/format-date.js'
@@ -33,7 +34,8 @@ export {
     Error,
 
     // Utils
-    HttpClient, 
+    HttpClient,
+    AxiosClient, 
     can,
     deepCopy,
     formatDate,
