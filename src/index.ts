@@ -17,15 +17,16 @@ import { formatDate, formatTimeObject } from './utils/format-date.js'
 
 // Types
 import type { IColumn } from './models/column.ts'
-import type { IData } from './models/data.ts' 
+import type { IData } from './models/data.ts'
 import type { IFilter } from './models/filter.ts'
 import type { IPaginator } from './models/paginator.ts'
 import type { IUploadedFile, IMetadata } from './models/uploaded-file.ts'
 
 // Localization
 import { locale as LimanLocaleProvider, date as LimanDateLocaleProvider } from './localization/provider/liman.js'
+import { locales as ApexLocales } from './localization/apex/index.js'
 
-export { 
+export {
     // Components
     PageHeader,
     UploadFile,
@@ -35,7 +36,7 @@ export {
 
     // Utils
     HttpClient,
-    AxiosClient, 
+    AxiosClient,
     can,
     deepCopy,
     formatDate,
@@ -43,7 +44,8 @@ export {
 
     // Localization
     LimanLocaleProvider,
-    LimanDateLocaleProvider
+    LimanDateLocaleProvider,
+    ApexLocales,
 }
 
 export type {

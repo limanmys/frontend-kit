@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import type { IUploadedFile } from "../models/uploaded-file.ts"
-import { HttpClient } from "../utils/http-common.js"
 import { NIcon, NP, NText, NUpload, NUploadDragger, type UploadCustomRequestOptions } from "naive-ui"
 import { ref } from "vue"
 
-const http = new HttpClient()
-
 const fileInformation = ref<IUploadedFile>()
+
 const emits = defineEmits<{
   (e: "uploaded", data: IUploadedFile): void
 }>()
@@ -15,10 +13,12 @@ const props = withDefaults(
   defineProps<{
     text?: string
     subtext?: string
+    accept?: string
   }>(),
   {
-    text: "Drag and drop a file here",
-    subtext: "or click to select a file",
+    text: "Drag and drop a file here or click to select a file",
+    subtext: "Make sure you don't upload any sensitive information. For example, passwords, credit card numbers, social security numbers, etc.",
+    accept: ".jpg,.png",
   },
 )
 
@@ -43,22 +43,10 @@ const customRequest = ({
     },
   })
 }
-
-const handleRemove = () => {
-  http
-    .php("cancelUpload", {
-      name: fileInformation.value?.name,
-    })
-    .then((res) => {
-      if (res.status == 200) {
-        fileInformation.value = undefined
-      }
-    })
-}
 </script>
 
 <template>
-  <NUpload :max="1" :custom-request="customRequest" @remove="handleRemove">
+  <NUpload :max="1" :accept="props.accept" :custom-request="customRequest">
     <NUploadDragger>
       <div style="margin-bottom: 18px">
         <NIcon size="48" :depth="3">
