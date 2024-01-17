@@ -12,6 +12,7 @@ import Error from './components/Error.vue'
 import { HttpClient } from './utils/http-common.js'
 import AxiosClient from './utils/axios-client.js'
 import can from './utils/can.js'
+import debounce from './utils/debounce.js'
 import { deepCopy } from './utils/deep-copy.js'
 import { formatDate, formatTimeObject } from './utils/format-date.js'
 
@@ -39,6 +40,7 @@ export {
     AxiosClient,
     can,
     deepCopy,
+    debounce,
     formatDate,
     formatTimeObject,
 
