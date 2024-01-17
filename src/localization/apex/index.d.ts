@@ -1,5 +1,5 @@
-import type { apexEN } from './apex/en.d.ts'
-import type { apexTR } from './apex/tr.d.ts'
+import type { apexEN } from './en.d.ts'
+import type { apexTR } from './tr.d.ts'
 
 interface Locale {
   name: string;
