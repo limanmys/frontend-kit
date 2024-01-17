@@ -1,5 +1,5 @@
-import apexTR from "./apex/tr.js";
-import apexEN from "./apex/en.js";
+import apexTR from "./tr.js";
+import apexEN from "./en.js";
 
 let locales = [
   {
