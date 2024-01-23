@@ -6,7 +6,7 @@ import type { IFilter } from "../models/filter.ts";
 export interface Props {
   dispatcher: (payload?: IFilter) => Promise<any>;
   data: any[];
-  value: string | null;
+  value: string | string[] | null;
   labelField: string;
   valueField: string;
   placeholder?: string;
