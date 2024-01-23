@@ -1,0 +1,71 @@
+<script setup lang="ts">
+import { computed, onMounted, ref } from "vue";
+import createDebounce from "../utils/debounce.js";
+import type { IFilter } from "../models/filter.ts";
+
+export interface Props {
+  dispatcher: (payload?: IFilter) => Promise<any>;
+  data: any[];
+  value: string | null;
+  labelField: string;
+  valueField: string;
+  placeholder?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  placeholder: "Search...",
+});
+
+const emit = defineEmits<{
+  (event: "update:value", ...args: any[]): void;
+}>();
+
+const value = computed({
+  get() {
+    return props.value;
+  },
+  set(value) {
+    emit("update:value", value);
+  },
+});
+
+const searchDebounce = createDebounce();
+
+const loading = ref(true);
+
+const search = (query: string) => {
+  loading.value = true;
+  searchDebounce(() => {
+    props
+      .dispatcher({
+        search: query,
+        per_page: 20,
+      })
+      .then(() => {
+        loading.value = false;
+      });
+  }, 300);
+};
+
+onMounted(() => {
+  props.dispatcher().then(() => {
+    loading.value = false;
+  });
+});
+</script>
+
+<template>
+  <n-select
+    v-model:value="value"
+    filterable
+    :placeholder="props.placeholder"
+    :options="props.data"
+    :loading="loading"
+    clearable
+    remote
+    :clear-filter-after-select="false"
+    @search="search"
+    :label-field="props.labelField"
+    :value-field="props.valueField"
+  />
+</template>

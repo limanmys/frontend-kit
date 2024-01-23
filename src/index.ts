@@ -6,6 +6,7 @@ import PageHeader from './components/PageHeader.vue'
 import UploadFile from './components/UploadFile.vue'
 import DropdownMenu from './components/DropdownMenu.vue'
 import ColumnSelector from './components/ColumnSelector.vue'
+import AsyncSelect from './components/AsyncSelect.vue'
 import Error from './components/Error.vue'
 
 // Utils
@@ -33,6 +34,7 @@ export {
     UploadFile,
     DropdownMenu,
     ColumnSelector,
+    AsyncSelect,
     Error,
 
     // Utils
