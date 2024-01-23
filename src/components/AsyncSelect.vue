@@ -10,10 +10,12 @@ export interface Props {
   labelField: string;
   valueField: string;
   placeholder?: string;
+  multiple?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   placeholder: "Search...",
+  multiple: false,
 });
 
 const emit = defineEmits<{
@@ -67,5 +69,6 @@ onMounted(() => {
     @search="search"
     :label-field="props.labelField"
     :value-field="props.valueField"
+    :multiple="props.multiple"
   />
 </template>
