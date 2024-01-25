@@ -64,7 +64,8 @@ function render() {
           if (
             column.key == "id" ||
             column.key == "actions" ||
-            column.type == "selection"
+            column.type == "selection" ||
+            !column.title
           ) {
             return;
           }
