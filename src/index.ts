@@ -16,6 +16,7 @@ import can from './utils/can.js'
 import createDebounce from './utils/debounce.js'
 import { deepCopy } from './utils/deep-copy.js'
 import { formatDate, formatTimeObject } from './utils/format-date.js'
+import { lightThemeOverrides as LimanLightThemeOverrides, darkThemeOverrides as LimanDarkThemeOverrides } from './utils/theme-overrides.js'
 
 // Types
 import type { IColumn } from './models/column.ts'
@@ -45,6 +46,8 @@ export {
     createDebounce,
     formatDate,
     formatTimeObject,
+    LimanLightThemeOverrides,
+    LimanDarkThemeOverrides,
 
     // Localization
     LimanLocaleProvider,
