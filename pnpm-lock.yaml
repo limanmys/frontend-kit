@@ -5,9 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@form-create/naive-ui':
+    specifier: ^3.1.27
+    version: 3.1.27(vue@3.4.10)
   '@json2csv/plainjs':
     specifier: ^7.0.4
     version: 7.0.4
+  '@tanstack/vue-query':
+    specifier: ^5.18.1
+    version: 5.18.1(vue@3.4.10)
   axios:
     specifier: ^1.6.5
     version: 1.6.5
@@ -306,6 +312,69 @@ packages:
     dev: true
     optional: true
 
+  /@form-create/component-naive-checkbox@3.1.24:
+    resolution: {integrity: sha512-7skllwOioDwLoagsKAOcKUI0hfWUls9IO2hjEWiG+GfOptusa85rtShKZlsaN6Zu+8Dw76ddTmS14NkBctuhOA==}
+    dependencies:
+      '@form-create/utils': 3.1.23
+    dev: false
+
+  /@form-create/component-naive-frame@3.1.26:
+    resolution: {integrity: sha512-aliSy6IraaLCRgjqWD+IEw+O+71r6umOOx+RbbqZImMrSfUTkxNL2xfXSvEdXMyZPgWYXAPSCPNDp5YsYFCxbA==}
+    dependencies:
+      '@form-create/utils': 3.1.23
+    dev: false
+
+  /@form-create/component-naive-group@3.1.27:
+    resolution: {integrity: sha512-/XnqPGn1Jv705pI2+aByUtHGJoYsDDTiJSD0gH9sdvZQjOUu/pBhryT2lfWxR2hb3GToXlOTSFH5nMkvL6VN6g==}
+    dependencies:
+      '@form-create/utils': 3.1.23
+    dev: false
+
+  /@form-create/component-naive-radio@3.1.24:
+    resolution: {integrity: sha512-Jc6r2oAQpcNAhGNrnHKDs/cBGsegP+ubALYOcsmP8U+k4acMTuTOZ8G8Oi6eOG0vQ+ZAD4LcUohYIme4t22S9w==}
+    dependencies:
+      '@form-create/utils': 3.1.23
+    dev: false
+
+  /@form-create/component-naive-upload@3.1.24:
+    resolution: {integrity: sha512-ac09ovLfTFLa7sQQTPMguZFLiL9RHDnRXcA/ALVYsN+Ehg+2OBTV2XfoKpt1nWRNm1/EYq60rrKw7RslfOn/bA==}
+    dependencies:
+      '@form-create/utils': 3.1.23
+    dev: false
+
+  /@form-create/component-subform@3.1.5:
+    resolution: {integrity: sha512-JHNEFGuwpnjGvCJ0I0GCqPL5al0qXoN4ymnRBpm+oL+6MMo5bz1kUyoqMX1MutuC96gHTqpeqc67hssi8g2mIw==}
+    dev: false
+
+  /@form-create/core@3.1.27(vue@3.4.10):
+    resolution: {integrity: sha512-oupou9o8ScZAbnuMdo3vHYP1moYLaz8JiY+qEhumoAgAoGrmfE9O+hQWdYY0dnfvTDUL0A3o4h7JbE0GKT8KBQ==}
+    peerDependencies:
+      vue: ^3.1.0
+    dependencies:
+      '@form-create/utils': 3.1.23
+      vue: 3.4.10(typescript@5.3.3)
+    dev: false
+
+  /@form-create/naive-ui@3.1.27(vue@3.4.10):
+    resolution: {integrity: sha512-JS8YxsYMS33jMG1ySQrhxU+7GUdyG0hDSPiCpMqRULnAnJlJgUtJAC3l3C+917M1SM0wYFh3wC/vPVoWsZuHSw==}
+    peerDependencies:
+      vue: ^3.1.0
+    dependencies:
+      '@form-create/component-naive-checkbox': 3.1.24
+      '@form-create/component-naive-frame': 3.1.26
+      '@form-create/component-naive-group': 3.1.27
+      '@form-create/component-naive-radio': 3.1.24
+      '@form-create/component-naive-upload': 3.1.24
+      '@form-create/component-subform': 3.1.5
+      '@form-create/core': 3.1.27(vue@3.4.10)
+      '@form-create/utils': 3.1.23
+      vue: 3.4.10(typescript@5.3.3)
+    dev: false
+
+  /@form-create/utils@3.1.23:
+    resolution: {integrity: sha512-MmzCbWi1CuzB8oqpbHgPV/8152iUWdxzVKSuwrcl8nsVqMlSzxhydVLN5Au7uWDqCHhe/xzHBeIOxOtar8qjkw==}
+    dev: false
+
   /@jridgewell/sourcemap-codec@1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
 
@@ -432,6 +501,33 @@ packages:
     resolution: {integrity: sha512-mW54K6CTVJVLwXRB6kSS1xGWPmtTuXAStWnlvtesmcySgtop+eFPWOywBFPpJO4UD173epYsPSP6HSW8kuqN8w==}
     dev: false
 
+  /@tanstack/match-sorter-utils@8.11.8:
+    resolution: {integrity: sha512-3VPh0SYMGCa5dWQEqNab87UpCMk+ANWHDP4ALs5PeEW9EpfTAbrezzaOk/OiM52IESViefkoAOYuxdoa04p6aA==}
+    engines: {node: '>=12'}
+    dependencies:
+      remove-accents: 0.4.2
+    dev: false
+
+  /@tanstack/query-core@5.18.1:
+    resolution: {integrity: sha512-fYhrG7bHgSNbnkIJF2R4VUXb4lF7EBiQjKkDc5wOlB7usdQOIN4LxxHpDxyE3qjqIst1WBGvDtL48T0sHJGKCw==}
+    dev: false
+
+  /@tanstack/vue-query@5.18.1(vue@3.4.10):
+    resolution: {integrity: sha512-JPR6AzIcnoid+PTMFWHXglIofuWLntMzQTWVE39/sDSXhrTV0tNS20KgRj/xLL3pyU8e+1In4y5YJJ7nz2NmmA==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.2
+      vue: ^2.6.0 || ^3.3.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@tanstack/match-sorter-utils': 8.11.8
+      '@tanstack/query-core': 5.18.1
+      '@vue/devtools-api': 6.5.1
+      vue: 3.4.10(typescript@5.3.3)
+      vue-demi: 0.14.7(vue@3.4.10)
+    dev: false
+
   /@tsconfig/node20@20.1.2:
     resolution: {integrity: sha512-madaWq2k+LYMEhmcp0fs+OGaLFk0OenpHa4gmI4VEmCKX4PJntQ6fnnGADVFrVkBj0wIdAlQnK/MrlYTHsa1gQ==}
     dev: true
@@ -527,6 +623,10 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.4.10
       '@vue/shared': 3.4.10
+
+  /@vue/devtools-api@6.5.1:
+    resolution: {integrity: sha512-+KpckaAQyfbvshdDW5xQylLni1asvNSGme1JFs8I1+/H5pHEhqUKMEQD/qn3Nx5+/nycBq11qAEi8lk+LXI2dA==}
+    dev: false
 
   /@vue/language-core@1.8.27(typescript@5.3.3):
     resolution: {integrity: sha512-L8Kc27VdQserNaCUNiSFdDl9LWT24ly8Hpwf1ECy3aFb9m6bDhBGQYOujDm21N7EW3moKIOKEanQwe1q5BK+mA==}
@@ -845,6 +945,10 @@ packages:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
     dev: false
 
+  /remove-accents@0.4.2:
+    resolution: {integrity: sha512-7pXIJqJOq5tFgG1A2Zxti3Ht8jJF337m4sowbuHsW30ZnkQFnDzy9qBNhgzX8ZLW4+UBcXiiR7SwR6pokHsxiA==}
+    dev: false
+
   /rollup@4.9.4:
     resolution: {integrity: sha512-2ztU7pY/lrQyXSCnnoU4ICjT/tCG9cdH3/G25ERqE3Lst6vl2BCM5hL2Nw+sslAvAf+ccKsAq1SkKQALyqhR7g==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -947,6 +1051,21 @@ packages:
       vue: ^3.0.0
     dependencies:
       evtd: 0.2.4
+      vue: 3.4.10(typescript@5.3.3)
+    dev: false
+
+  /vue-demi@0.14.7(vue@3.4.10):
+    resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
       vue: 3.4.10(typescript@5.3.3)
     dev: false
 

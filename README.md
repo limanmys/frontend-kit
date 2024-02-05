@@ -12,3 +12,51 @@ This kit is designed to streamline the process of developing extensions for your
 1. Clone the repository
 2. Install the dependencies with `pnpm install`
 3. Start developing your extension
+
+
+### Modal Usage
+
+```typescript
+const openModal = () => {
+  modal.open({
+    title: "Test",
+    formMode: true,
+    formOptions: {
+      options: {
+        submitBtn: {
+          text: "Gönder",
+          show: true,
+        },
+        onSubmit: (data: any) => {
+          console.log(data)
+        },
+      },
+      rule: [
+        {
+          type: "input",
+          field: "goods_name",
+          title: "Name",
+          validate: [
+            {
+              required: true,
+              trigger: "blur",
+              message: "Name cannot be empty",
+            },
+          ],
+        },
+        {
+          type: "checkbox",
+          field: "label",
+          title: "Select",
+          options: [
+            { label: "a", value: 0 },
+            { label: "b", value: 1 },
+            { label: "c", value: 2 },
+            { label: "d", value: 3 },
+          ],
+        },
+      ],
+    },
+  })
+}
+```

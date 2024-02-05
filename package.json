@@ -1,6 +1,6 @@
 {
   "name": "@limanmys/frontend-kit",
-  "version": "1.0.17",
+  "version": "1.0.21",
   "type": "module",
   "repository": {
     "type": "git",
@@ -31,7 +31,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@form-create/naive-ui": "^3.1.27",
     "@json2csv/plainjs": "^7.0.4",
+    "@tanstack/vue-query": "^5.18.1",
     "axios": "^1.6.5",
     "date-fns": "^3.2.0",
     "js-file-download": "^0.4.12",
