@@ -12,6 +12,7 @@ import ColumnSelector from './components/ColumnSelector.vue'
 import AsyncSelect from './components/AsyncSelect.vue'
 import Error from './components/Error.vue'
 import ModalInjector from './components/ModalInjector.vue'
+import QuickDatePicker from './components/QuickDatePicker.vue'
 
 // Utils
 import { HttpClient } from './utils/http-common.js'
@@ -48,6 +49,7 @@ export {
     AsyncSelect,
     Error,
     ModalInjector,
+    QuickDatePicker,
 
     // Utils
     HttpClient,
