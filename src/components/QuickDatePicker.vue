@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { formatDate } from "../utils/format-date.js"
-import { useThemeVars } from "naive-ui"
-import { computed, defineModel, ref } from "vue"
+import { useThemeVars } from "naive-ui";
+import { computed, defineModel, ref } from "vue";
+import { formatDate } from "../utils/format-date.js";
 
 const value = defineModel("value", {
   required: true,
   default: [
-    new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // Subtract 7 days from current date
-    new Date(Date.now()),
+    Date.now() - 7 * 24 * 60 * 60 * 1000, // Subtract 7 days from current date
+    Date.now(),
   ],
-})
+});
 
-const vars = useThemeVars()
+const vars = useThemeVars();
 const gridStyle = {
   padding: "15px 10px",
   borderRight: `1px solid ${vars.value.borderColor}`,
-}
+};
 
-const showPopover = ref(false)
+const show = ref(false);
 
 const translatedValues = computed(() => {
-  return [formatDate(value.value[0]), formatDate(value.value[1])]
-})
+  return [formatDate(value.value[0]), formatDate(value.value[1])];
+});
 
-const fastValues = [
+const options = [
   {
     label: "Son 10 Dakika",
     value: 10,
@@ -60,17 +60,17 @@ const fastValues = [
     label: "Son 90 Gün",
     value: 60 * 24 * 90,
   },
-]
+];
 
 const setValue = (minutes: number) => {
-  value.value = [new Date(Date.now() - minutes * 60 * 1000), new Date()]
-}
+  value.value = [Date.now() - minutes * 60 * 1000, Date.now()];
+};
 </script>
 
 <template>
   <n-popover
     trigger="manual"
-    :show="showPopover"
+    :show="show"
     placement="bottom"
     :show-arrow="true"
   >
@@ -80,7 +80,7 @@ const setValue = (minutes: number) => {
         :value="translatedValues"
         :allow-input="() => false"
         :passively-activated="true"
-        @click="showPopover = true"
+        @click="show = true"
       >
         <template #prefix>
           <i class="fa-solid fa-calendar" />
@@ -107,7 +107,7 @@ const setValue = (minutes: number) => {
             size="small"
             style="font-size: 13px; width: 100%; display: block"
             @click="setValue(item.value)"
-            v-for="item in fastValues"
+            v-for="item in options"
             v-bind:key="item.label"
           >
             {{ item.label }}
@@ -137,11 +137,9 @@ const setValue = (minutes: number) => {
     </n-grid>
     <template #footer>
       <n-space justify="end">
-        <n-button size="tiny" @click="setValue(60 * 24 * 7)">
-          Sıfırla
-        </n-button>
+        <n-button size="tiny" @click="setValue(60 * 24)"> Sıfırla </n-button>
 
-        <n-button size="tiny" type="primary" @click="showPopover = false">
+        <n-button size="tiny" type="primary" @click="show = false">
           Onayla
         </n-button>
       </n-space>
