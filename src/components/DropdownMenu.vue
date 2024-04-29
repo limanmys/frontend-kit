@@ -7,9 +7,9 @@ const props = defineProps<{
 </script>
 
 <template>
-  <NDropdown :options="props.options">
+  <NDropdown :options="props.options" trigger="click">
     <NButton size="small" quaternary
-      ><i class="fas fa-ellipsis-vertical"
+      ><i class="fas fa-ellipsis"
     /></NButton>
   </NDropdown>
 </template>
