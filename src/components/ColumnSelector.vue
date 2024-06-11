@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { NButton, NCheckbox, NSpace, NSelect, NDropdown } from "naive-ui"
-import { h, toRefs, ref } from "vue"
-import csvExport from "../utils/csv.js"
-import type { IData } from "../models/data.ts"
-import type { IColumn } from "../models/column.ts"
+import { NButton, NCheckbox, NDropdown, NSelect, NSpace } from "naive-ui";
+import { h, ref, toRefs } from "vue";
+import type { IColumn } from "../models/column.ts";
+import type { IData } from "../models/data.ts";
+import csvExport from "../utils/csv.js";
 
 const props = withDefaults(
   defineProps<{
@@ -73,9 +73,9 @@ function render() {
             label: column.title,
             value: column.key,
             checked: column.show ? true : false,
-            // Disabled if show count is 3
+            // Disabled if show count is 3 or less
             disabled:
-              columns.value.filter((c) => c.show).length == 3 && column.show,
+              columns.value.filter((c) => c.show).length <= 3 && column.show,
             "on-update:checked": (e: boolean) => {
               // Get show property count
               const showCount = columns.value.filter((c) => c.show).length;
