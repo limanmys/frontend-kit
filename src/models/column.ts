@@ -6,6 +6,7 @@ export interface IColumn {
   width?: number
   ellipsis?: {
     tooltip: boolean
+    "line-clamp"?: number | string
   }
   render?: (record: any) => any
   type?: string
