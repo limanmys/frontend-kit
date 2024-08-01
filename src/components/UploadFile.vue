@@ -1,26 +1,35 @@
 <script setup lang="ts">
-import type { IUploadedFile } from "../models/uploaded-file.ts"
-import { NIcon, NP, NText, NUpload, NUploadDragger, type UploadCustomRequestOptions } from "naive-ui"
-import { ref } from "vue"
+import type { IUploadedFile } from "../models/uploaded-file.ts";
+import {
+  NIcon,
+  NP,
+  NText,
+  NUpload,
+  NUploadDragger,
+  type UploadCustomRequestOptions,
+} from "naive-ui";
+import { ref } from "vue";
 
-const fileInformation = ref<IUploadedFile>()
+const fileInformation = ref<IUploadedFile>();
 
 const emits = defineEmits<{
-  (e: "uploaded", data: IUploadedFile): void
-}>()
+  (e: "uploaded", data: IUploadedFile): void;
+  (e: "removed"): void;
+}>();
 
 const props = withDefaults(
   defineProps<{
-    text?: string
-    subtext?: string
-    accept?: string
+    text?: string;
+    subtext?: string;
+    accept?: string;
   }>(),
   {
     text: "Drag and drop a file here or click to select a file",
-    subtext: "Make sure you don't upload any sensitive information. For example, passwords, credit card numbers, social security numbers, etc.",
+    subtext:
+      "Make sure you don't upload any sensitive information. For example, passwords, credit card numbers, social security numbers, etc.",
     accept: ".jpg,.png",
-  },
-)
+  }
+);
 
 const customRequest = ({
   file,
@@ -34,19 +43,29 @@ const customRequest = ({
     onProgress: function (bytesUploaded: number, bytesTotal: number) {
       onProgress({
         percent: (bytesUploaded / bytesTotal) * 100,
-      })
+      });
     },
     onSuccess: function (upload: any) {
-      fileInformation.value = upload.info
-      emits("uploaded", upload.info)
-      onFinish()
+      fileInformation.value = upload.info;
+      emits("uploaded", upload.info);
+      onFinish();
     },
-  })
-}
+  });
+};
+
+const clearInput = () => {
+  fileInformation.value = {} as IUploadedFile;
+  emits("removed");
+};
 </script>
 
 <template>
-  <NUpload :max="1" :accept="props.accept" :custom-request="customRequest">
+  <NUpload
+    :max="1"
+    :accept="props.accept"
+    :custom-request="customRequest"
+    @remove="clearInput"
+  >
     <NUploadDragger>
       <div style="margin-bottom: 18px">
         <NIcon size="48" :depth="3">
