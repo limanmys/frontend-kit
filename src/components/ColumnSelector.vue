@@ -75,7 +75,7 @@ function render() {
             checked: column.show ? true : false,
             // Disabled if show count is 3 or less
             disabled:
-              columns.value.filter((c) => c.show).length <= 3 && column.show,
+              columns.value.filter((c) => c.show && c.title).length <= 3 && column.show,
             "on-update:checked": (e: boolean) => {
               // Get show property count
               const showCount = columns.value.filter((c) => c.show).length;
