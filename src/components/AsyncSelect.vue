@@ -4,18 +4,20 @@ import createDebounce from "../utils/debounce.js";
 import type { IFilter } from "../models/filter.ts";
 
 export interface Props {
-  dispatcher: (payload?: IFilter) => Promise<any>;
+  dispatcher: (payload?: IFilter, ...args: any) => Promise<any>;
   data: any[];
   value: string | string[] | null;
   labelField: string;
   valueField: string;
   placeholder?: string;
   multiple?: boolean;
+  args: any[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
   placeholder: "Search...",
   multiple: false,
+  args: [] as any,
 });
 
 const emit = defineEmits<{
@@ -42,7 +44,7 @@ const search = (query: string) => {
       .dispatcher({
         search: query,
         per_page: 20,
-      })
+      }, ...props.args)
       .then(() => {
         loading.value = false;
       });
