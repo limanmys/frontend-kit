@@ -52,7 +52,7 @@ const search = (query: string) => {
 };
 
 onMounted(() => {
-  props.dispatcher().then(() => {
+  props.dispatcher({ per_page: 20 }, ...props.args).then(() => {
     loading.value = false;
   });
 });
