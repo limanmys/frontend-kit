@@ -77,7 +77,7 @@ export default class AxiosClient {
       "X-CSRF-TOKEN": csrf,
     },
     baseURL: "/engine/",
-    timeout: 30000,
+    timeout: 75000,
     transformRequest: [
       (data) => {
         const formData = new FormData()
