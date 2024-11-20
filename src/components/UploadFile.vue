@@ -22,12 +22,14 @@ const props = withDefaults(
     text?: string;
     subtext?: string;
     accept?: string;
+    supportedFileTypes?: string;
   }>(),
   {
     text: "Drag and drop a file here or click to select a file",
     subtext:
       "Make sure you don't upload any sensitive information. For example, passwords, credit card numbers, social security numbers, etc.",
     accept: ".jpg,.png",
+    supportedFileTypes: "Supported file types: ",
   }
 );
 
@@ -80,6 +82,9 @@ const clearInput = () => {
       </NText>
       <NP depth="3" style="margin: 8px 0 0 0">
         {{ props.subtext }}
+      </NP>
+      <NP depth="3" style="margin: 8px 0 0 0">
+        {{ props.supportedFileTypes }} {{ props.accept }}
       </NP>
     </NUploadDragger>
   </NUpload>
