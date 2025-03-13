@@ -17,6 +17,7 @@ export default class AxiosClient {
   private data: IData
   private loadingBarStatus: boolean = false
   private loadingBarCounter: number = 0
+  private isDialogOpen: boolean = false
 
   constructor(data: IData) {
     this.data = data
@@ -34,6 +35,19 @@ export default class AxiosClient {
       (response) => {
         if (response.data.status == 200) {
           response.data = response.data.message
+          this.stopLoadingBar()
+        } else if (response.data.status == 403) {
+          if (!this.isDialogOpen) {
+            this.isDialogOpen = true
+            window.$dialog.destroyAll()
+            window.$dialog.error({
+              title: "Yetki Hatası",
+              content: response.data.message,
+              onClose: () => {
+                this.isDialogOpen = false
+              },
+            })
+          }
           this.stopLoadingBar()
         } else {
           this.errorOnLoadingBar()
