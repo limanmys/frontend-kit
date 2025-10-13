@@ -80,6 +80,10 @@ const confirmSelection = () => {
 const resetSelection = () => {
   tempValue.value = [Date.now() - 60 * 24 * 60 * 1000, Date.now()];
 };
+
+const handleClickOutside = () => {
+  show.value = false;
+};
 </script>
 
 <template>
@@ -88,6 +92,7 @@ const resetSelection = () => {
     :show="show"
     placement="bottom"
     :show-arrow="true"
+    @clickoutside="handleClickOutside"
   >
     <template #trigger>
       <n-input
