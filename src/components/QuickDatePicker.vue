@@ -18,7 +18,6 @@ const gridStyle = {
 };
 
 const show = ref(false);
-const tempValue = ref<[number, number]>([0, 0]);
 
 const translatedValues = computed(() => {
   return [formatDate(value.value[0]), formatDate(value.value[1])];
@@ -64,21 +63,11 @@ const options = [
 ];
 
 const setValue = (minutes: number) => {
-  tempValue.value = [Date.now() - minutes * 60 * 1000, Date.now()];
-};
-
-const openPopover = () => {
-  tempValue.value = [...value.value] as [number, number];
-  show.value = true;
-};
-
-const confirmSelection = () => {
-  value.value = [...tempValue.value];
-  show.value = false;
+  value.value = [Date.now() - minutes * 60 * 1000, Date.now()];
 };
 
 const resetSelection = () => {
-  tempValue.value = [Date.now() - 60 * 24 * 60 * 1000, Date.now()];
+  value.value = [Date.now() - 60 * 24 * 60 * 1000, Date.now()];
 };
 
 const handleClickOutside = () => {
@@ -100,7 +89,7 @@ const handleClickOutside = () => {
         :value="translatedValues"
         :allow-input="() => false"
         :passively-activated="true"
-        @click="openPopover"
+        @click="show = true"
       >
         <template #prefix>
           <i class="fa-solid fa-calendar" />
@@ -144,22 +133,14 @@ const handleClickOutside = () => {
 
         <n-space vertical class="mb-4">
           <span style="font-size: 13px; display: block"> Başlangıç </span>
-          <n-date-picker v-model:value="tempValue[0]" type="date" />
-          <n-time-picker
-            v-model:value="tempValue[0]"
-            type="time"
-            format="HH:mm"
-          />
+          <n-date-picker v-model:value="value[0]" type="date" />
+          <n-time-picker v-model:value="value[0]" type="time" format="HH:mm" />
         </n-space>
 
         <n-space vertical>
           <span style="font-size: 13px; display: block"> Bitiş </span>
-          <n-date-picker v-model:value="tempValue[1]" type="date" />
-          <n-time-picker
-            v-model:value="tempValue[1]"
-            type="time"
-            format="HH:mm"
-          />
+          <n-date-picker v-model:value="value[1]" type="date" />
+          <n-time-picker v-model:value="value[1]" type="time" format="HH:mm" />
         </n-space>
       </n-gi>
     </n-grid>
@@ -167,7 +148,7 @@ const handleClickOutside = () => {
       <n-space justify="end">
         <n-button size="tiny" @click="resetSelection"> Sıfırla </n-button>
 
-        <n-button size="tiny" type="primary" @click="confirmSelection">
+        <n-button size="tiny" type="primary" @click="show = false">
           Onayla
         </n-button>
       </n-space>
