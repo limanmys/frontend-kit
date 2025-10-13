@@ -18,6 +18,7 @@ const gridStyle = {
 };
 
 const show = ref(false);
+const tempValue = ref<[number, number]>([0, 0]);
 
 const translatedValues = computed(() => {
   return [formatDate(value.value[0]), formatDate(value.value[1])];
@@ -63,7 +64,21 @@ const options = [
 ];
 
 const setValue = (minutes: number) => {
-  value.value = [Date.now() - minutes * 60 * 1000, Date.now()];
+  tempValue.value = [Date.now() - minutes * 60 * 1000, Date.now()];
+};
+
+const openPopover = () => {
+  tempValue.value = [...value.value] as [number, number];
+  show.value = true;
+};
+
+const confirmSelection = () => {
+  value.value = [...tempValue.value];
+  show.value = false;
+};
+
+const resetSelection = () => {
+  tempValue.value = [Date.now() - 60 * 24 * 60 * 1000, Date.now()];
 };
 </script>
 
@@ -80,7 +95,7 @@ const setValue = (minutes: number) => {
         :value="translatedValues"
         :allow-input="() => false"
         :passively-activated="true"
-        @click="show = true"
+        @click="openPopover"
       >
         <template #prefix>
           <i class="fa-solid fa-calendar" />
@@ -124,22 +139,30 @@ const setValue = (minutes: number) => {
 
         <n-space vertical class="mb-4">
           <span style="font-size: 13px; display: block"> Başlangıç </span>
-          <n-date-picker v-model:value="value[0]" type="date" />
-          <n-time-picker v-model:value="value[0]" type="time" format="HH:mm" />
+          <n-date-picker v-model:value="tempValue[0]" type="date" />
+          <n-time-picker
+            v-model:value="tempValue[0]"
+            type="time"
+            format="HH:mm"
+          />
         </n-space>
 
         <n-space vertical>
           <span style="font-size: 13px; display: block"> Bitiş </span>
-          <n-date-picker v-model:value="value[1]" type="date" />
-          <n-time-picker v-model:value="value[1]" type="time" format="HH:mm" />
+          <n-date-picker v-model:value="tempValue[1]" type="date" />
+          <n-time-picker
+            v-model:value="tempValue[1]"
+            type="time"
+            format="HH:mm"
+          />
         </n-space>
       </n-gi>
     </n-grid>
     <template #footer>
       <n-space justify="end">
-        <n-button size="tiny" @click="setValue(60 * 24)"> Sıfırla </n-button>
+        <n-button size="tiny" @click="resetSelection"> Sıfırla </n-button>
 
-        <n-button size="tiny" type="primary" @click="show = false">
+        <n-button size="tiny" type="primary" @click="confirmSelection">
           Onayla
         </n-button>
       </n-space>
