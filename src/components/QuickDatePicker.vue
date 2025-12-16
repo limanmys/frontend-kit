@@ -60,6 +60,14 @@ const options = [
     label: "Son 90 Gün",
     value: 60 * 24 * 90,
   },
+  {
+    label: "Son 6 Ay",
+    value: 60 * 24 * 180,
+  },
+  {
+    label: "Son 1 Yıl",
+    value: 60 * 24 * 365,
+  },
 ];
 
 const setValue = (minutes: number) => {
