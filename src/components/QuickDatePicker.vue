@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { useThemeVars } from "naive-ui";
-import { computed, defineModel, ref } from "vue";
-import { formatDate } from "../utils/format-date.js";
+import { useThemeVars } from "naive-ui"
+import { computed, ref } from "vue"
+import { formatDate } from "../utils/format-date.js"
 
-const value = defineModel("value", {
+const value = defineModel<number[]>("value", {
   required: true,
   default: [
     Date.now() - 7 * 24 * 60 * 60 * 1000, // Subtract 7 days from current date
     Date.now(),
   ],
-});
+})
 
-const vars = useThemeVars();
+const vars = useThemeVars()
 const gridStyle = {
   padding: "15px 10px",
   borderRight: `1px solid ${vars.value.borderColor}`,
-};
+}
 
-const show = ref(false);
+const show = ref(false)
 
 const translatedValues = computed(() => {
-  return [formatDate(value.value[0]), formatDate(value.value[1])];
-});
+  return [formatDate(value.value[0]), formatDate(value.value[1])]
+})
 
 const options = [
   {
@@ -68,19 +68,19 @@ const options = [
     label: "Son 1 Yıl",
     value: 60 * 24 * 365,
   },
-];
+]
 
 const setValue = (minutes: number) => {
-  value.value = [Date.now() - minutes * 60 * 1000, Date.now()];
-};
+  value.value = [Date.now() - minutes * 60 * 1000, Date.now()]
+}
 
 const resetSelection = () => {
-  value.value = [Date.now() - 60 * 24 * 60 * 1000, Date.now()];
-};
+  value.value = [Date.now() - 60 * 24 * 60 * 1000, Date.now()]
+}
 
 const handleClickOutside = () => {
-  show.value = false;
-};
+  show.value = false
+}
 </script>
 
 <template>

@@ -4,13 +4,13 @@ import type { IData } from "../models/data.ts"
 
 const server_id = document
   .getElementsByName("server_id")[0]
-  .getAttribute("content") as string
+  ?.getAttribute("content") as string
 const extension_id = document
   .getElementsByName("extension_id")[0]
-  .getAttribute("content") as string
+  ?.getAttribute("content") as string
 const csrf = document
   .getElementsByName("csrf-token")[0]
-  .getAttribute("content") as string
+  ?.getAttribute("content") as string
 const lmnbaseurl = window.location.origin
 const customRequestData = window.customRequestData
 export default class AxiosClient {

@@ -22,6 +22,7 @@ const formatTimeObject = (timeObject: { [key: string]: number }) => {
   for (const key in timeObject) {
     if (
       Object.prototype.hasOwnProperty.call(timeObject, key) &&
+      timeObject[key] !== undefined &&
       timeObject[key] > 0
     ) {
       const unitName = unitNames[key] || key
