@@ -73,16 +73,7 @@ function render() {
             label: column.title,
             value: column.key,
             checked: column.show ? true : false,
-            // Disabled if show count is 3 or less
-            disabled:
-              columns.value.filter((c) => c.show && c.title).length <= 3 && column.show,
             "on-update:checked": (e: boolean) => {
-              // Get show property count
-              const showCount = columns.value.filter((c) => c.show).length;
-              // If show count is 2 and user uncheck the checkbox, then do not uncheck
-              if (showCount == 3 && !e) {
-                return;
-              }
               column.show = e;
             },
           });
